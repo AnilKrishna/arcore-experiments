@@ -21,6 +21,7 @@ class RotatingNode : Node(), Node.OnTapListener {
         get() = (1000 * 360 / (degreesPerSecond * speedMultiplier)).toLong()
     private val speedMultiplier: Float
         get() = 1.0f
+
     override fun onUpdate(frameTime: FrameTime?) {
         super.onUpdate(frameTime)
         // Animation hasn't been set up.
@@ -43,16 +44,20 @@ class RotatingNode : Node(), Node.OnTapListener {
         }
         lastSpeedMultiplier = speedMultiplier
     }
+
     /** Sets rotation speed  */
     fun setDegreesPerSecond(degreesPerSecond: Float) {
         this.degreesPerSecond = degreesPerSecond
     }
+
     override fun onActivate() {
         startAnimation()
     }
+
     override fun onDeactivate() {
         stopAnimation()
     }
+
     private fun startAnimation() {
         if (rotationAnimation != null) {
             return
@@ -62,6 +67,7 @@ class RotatingNode : Node(), Node.OnTapListener {
         rotationAnimation!!.duration = animationDuration
         rotationAnimation!!.start()
     }
+
     private fun stopAnimation() {
         if (rotationAnimation == null) {
             return
@@ -69,6 +75,7 @@ class RotatingNode : Node(), Node.OnTapListener {
         rotationAnimation!!.cancel()
         rotationAnimation = null
     }
+
     /** Returns an ObjectAnimator that makes this node rotate.  */
     private fun createAnimator(): ObjectAnimator {
         // Node's setLocalRotation method accepts Quaternions as parameters.

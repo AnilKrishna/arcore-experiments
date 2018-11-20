@@ -37,7 +37,7 @@
     file: 'sampledata/Mesh_Dinosaur.obj',
     name: 'Mesh_Dinosaur',
     recenter: 'root',
-    scale: 0.0080230000000000006,
+    scale: 0.0010,
   },
   samplers: [
     {

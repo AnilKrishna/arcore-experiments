@@ -24,17 +24,27 @@
         Play Store to download and install ARCore when the app is installed.-->
         <meta-data android:name="com.google.ar.core" android:value="required" />
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".PlaneRecognitionActivity"
                   android:configChanges="orientation|screenSize"
                   android:exported="true"
                   android:theme="@style/Theme.AppCompat.NoActionBar"
                   android:screenOrientation="locked">
+
+        </activity>
+
+        <activity android:name=".ImageRecognitionActivity"
+                  android:configChanges="orientation|screenSize"
+                  android:exported="true"
+                  android:theme="@style/Theme.AppCompat.NoActionBar"
+                  android:screenOrientation="locked">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

@@ -12,18 +12,14 @@ import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.ModelRenderable
 import java.util.concurrent.CompletableFuture
 
-class AugmentedImageNode : AnchorNode() {
+class AugmentedImageNode(context: Context, filename:String) : AnchorNode() {
 
     private val TAG = "AugmentedImageNode"
     private lateinit var image: AugmentedImage
-    private lateinit var modelFuture: CompletableFuture<ModelRenderable>
-
-    fun AugmentedImageNode(context: Context, filename:String) {
-        // Upon construction, start loading the modelFuture
-        modelFuture = ModelRenderable.builder().setRegistryId("modelFuture")
-            .setSource(context, Uri.parse(filename))
-            .build()
-    }
+    // Upon construction, start loading the modelMural
+    private var modelMural: CompletableFuture<ModelRenderable> = ModelRenderable.builder().setRegistryId("modelMural")
+        .setSource(context, Uri.parse(filename))
+        .build()
 
     /**
      * Called when the AugmentedImage is detected and should be rendered. A Sceneform node tree is
@@ -33,9 +29,9 @@ class AugmentedImageNode : AnchorNode() {
      */
     fun setImage(image:AugmentedImage) {
         this.image = image
-        if (!modelFuture.isDone)
+        if (!modelMural.isDone)
         {
-            CompletableFuture.allOf(modelFuture).thenAccept { setImage(image) }.exceptionally { throwable->
+            CompletableFuture.allOf(modelMural).thenAccept { setImage(image) }.exceptionally { throwable->
                 Log.e(TAG, "Exception loading", throwable)
                 null }
         }
@@ -45,7 +41,7 @@ class AugmentedImageNode : AnchorNode() {
         node.setParent(this)
         node.localPosition = Vector3(pose.tx(), pose.ty(), pose.tz())
         node.localRotation = Quaternion(pose.qx(), pose.qy(), pose.qz(), pose.qw())
-        node.renderable = modelFuture.getNow(null)
+        node.renderable = modelMural.getNow(null)
     }
 
     fun getImage():AugmentedImage {

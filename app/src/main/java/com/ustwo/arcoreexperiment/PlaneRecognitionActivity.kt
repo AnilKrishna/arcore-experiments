@@ -12,15 +12,15 @@ import com.google.ar.sceneform.AnchorNode
 import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.ux.ArFragment
 import com.google.ar.sceneform.ux.TransformableNode
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_plane_recognition.*
 
-class MainActivity : AppCompatActivity() {
+class PlaneRecognitionActivity : AppCompatActivity() {
 
     private lateinit var fragment: ArFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_plane_recognition)
 
         fragment = supportFragmentManager.findFragmentById(R.id.sceneform_fragment) as ArFragment
 
