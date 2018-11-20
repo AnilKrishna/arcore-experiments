@@ -9,6 +9,7 @@ import com.google.ar.core.*
 import com.google.ar.core.exceptions.CameraNotAvailableException
 import com.google.ar.sceneform.ArSceneView
 import com.google.ar.sceneform.FrameTime
+import kotlinx.android.synthetic.main.activity_image_recognition.*
 import java.io.IOException
 
 class ImageRecognitionActivity: AppCompatActivity() {
@@ -22,7 +23,7 @@ class ImageRecognitionActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_recognition)
-        arSceneView = findViewById(R.id.surfaceview)
+        arSceneView = surfaceview
         initializeSceneView()
     }
 
