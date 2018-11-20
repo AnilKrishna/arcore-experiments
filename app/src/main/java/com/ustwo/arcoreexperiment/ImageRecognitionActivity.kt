@@ -17,14 +17,12 @@ class ImageRecognitionActivity: AppCompatActivity() {
 
     // Rendering. The Renderers are created here, and initialized when the GL surface is created.
     private lateinit var arSceneView: ArSceneView
-    private var installRequested:Boolean = false
     private var session: Session? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_recognition)
         arSceneView = findViewById(R.id.surfaceview)
-        installRequested = false
         initializeSceneView()
     }
 
@@ -62,7 +60,7 @@ class ImageRecognitionActivity: AppCompatActivity() {
 
 
     private fun initializeSceneView() {
-        arSceneView.scene.setOnUpdateListener((({ this.onUpdateFrame(it) })))
+        arSceneView.scene.addOnUpdateListener { this.onUpdateFrame(it) }
     }
 
     private fun onUpdateFrame(frameTime: FrameTime) {
