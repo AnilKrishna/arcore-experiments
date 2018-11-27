@@ -37,9 +37,9 @@ class AugmentedImageNode(context: Context, filename:String) : AnchorNode() {
         }
         anchor = image.createAnchor(image.centerPose)
         val node = Node()
-        val pose = Pose.makeTranslation(0.0f,0.0f,0.0f)
+        //val pose = Pose.makeTranslation(0.0f,0.0f,0.0f)
         node.setParent(this)
-        node.localPosition = Vector3(pose.tx(), pose.ty(), pose.tz())
+        node.localPosition = Vector3(0.0f,0.0f,0.10f)
         node.localRotation = Quaternion.axisAngle(Vector3(-90.0f,0.0f,0.0f),1.0f)
 
 

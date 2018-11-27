@@ -74,7 +74,7 @@ class ImageRecognitionActivity: AppCompatActivity() {
                 // Check camera image matches our reference image
                 if (augmentedImage.name == "mural")
                 {
-                    val node = AugmentedImageNode(this, "Mesh_Dinosaur.sfb")
+                    val node = AugmentedImageNode(this, "mural_animated_path.sfb")
                     node.setImage(augmentedImage)
                     arSceneView.scene.addChild(node)
                 }
@@ -96,6 +96,7 @@ class ImageRecognitionActivity: AppCompatActivity() {
         val augmentedImageDatabase = AugmentedImageDatabase(session)
         val augmentedImageBitmap = loadAugmentedImage() ?: return false
         augmentedImageDatabase.addImage("mural", augmentedImageBitmap)
+        //augmentedImageDatabase.addImage("mural", augmentedImageBitmap,3.5f)
         config.augmentedImageDatabase = augmentedImageDatabase
         return true
     }
@@ -103,7 +104,7 @@ class ImageRecognitionActivity: AppCompatActivity() {
     private fun loadAugmentedImage(): Bitmap? {
         try
         {
-            assets.open("mural.png").use { `is`-> return BitmapFactory.decodeStream(`is`) }
+            assets.open("mural-half.png").use { `is`-> return BitmapFactory.decodeStream(`is`) }
         }
         catch (e: IOException) {
             Log.e(TAG, "IO exception loading augmented image bitmap.", e)

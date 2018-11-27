@@ -46,3 +46,8 @@ sceneform.asset('sampledata/Mesh_Dinosaur.obj',
         'default',
         'sampledata/Mesh_Dinosaur.sfa',
         'src/main/assets/Mesh_Dinosaur')
+
+sceneform.asset('sampledata/mural_animated_path.obj',
+        'default',
+        'sampledata/mural_animated_path.sfa',
+        'src/main/assets/mural_animated_path')
