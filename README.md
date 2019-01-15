@@ -12,10 +12,7 @@ The aim of the experiment is to:
 *  kotlin-android plugin
 
 ## Features
-* This initial sample provides an over all understanding of detecting planes 
-
-## References
-* [ARCore Playground Trello](https://trello.com/b/uH6dr8a0/arcore-playground)
+* This initial sample provides an over all understanding of detecting planes
 
 
 
